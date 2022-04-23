@@ -17,8 +17,8 @@ void dijkstra(int start)	// 시작할 노드의 번호를 인자로 받는 다익스트라 알고리즘
 	pq.push(make_pair(start, 0));	// 우선순위 큐의 키값에 넣는 값은 항상 노드의 번호
 	while (!pq.empty())
 	{
-		int current = pq.top().first;	// 현재 방문한 노드 번호
-		int distance = -pq.top().second;	// 처음 시작한 곳부터 방문하고 있는 노드의 거리
+		auto [current, distance] = pq.top();	// 현재 방문한 노드 번호
+		distance *= -1;	// 처음 시작한 곳부터 방문하고 있는 노드의 거리
 		pq.pop();
 		if (d[current] < distance) continue;
 		for (int i = 0; i < a[current].size(); i++)	// a인접리스트의 current번째 배열의 크기만큼 반복함
